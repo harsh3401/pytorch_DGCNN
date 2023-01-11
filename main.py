@@ -239,3 +239,5 @@ if __name__ == '__main__':
         features, labels = classifier.output_features(test_graphs)
         labels = labels.type('torch.FloatTensor')
         np.savetxt('extracted_features_test.txt', torch.cat([labels.unsqueeze(1), features.cpu()], dim=1).detach().numpy(), '%.4f')
+        print(classifier.state_dict())
+        torch.save(classifier.state_dict(),"trained.pkl")
